@@ -41,6 +41,22 @@ class MoviesController < ApplicationController
     redirect_to movies_path, alert: "已删除"
   end
 
+  def favorite
+    @movie = Movie.find(params[:id])
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorite_movies << @movie
+      flash[:notice] = "已收藏电影"
+      redirect_to :back
+    elsif type == "unfavorite"
+      current_user.favorite_movies.delete(@movie)
+      flash[:notice] = "已取消收藏"
+      redirect_to :back
+    else
+      redirect_to :back
+    end
+  end
+
   private
 
   def movie_params

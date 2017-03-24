@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :movies
+  resources :movies do
+    member do
+      post :favorite
+    end
+  end
 
 
 
