@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :favorite]
 
   def index
     @movies = Movie.all
@@ -50,7 +51,7 @@ class MoviesController < ApplicationController
       redirect_to :back
     elsif type == "unfavorite"
       current_user.favorite_movies.delete(@movie)
-      flash[:notice] = "已取消收藏"
+      flash[:alert] = "已取消收藏"
       redirect_to :back
     else
       redirect_to :back
