@@ -26,4 +26,18 @@
      </div>
    </div>
 
+   <div class="review">
+      <h3 class="reviews_title">
+        <%= @movie.reviews.count %> Reviews
+      </h3>
+      <hr>
+      <div id="reivews">
+        <%= render @movie.reviews%>
+        <hr>
+        <%= render "reviews/form"%>
+      </div>
+    </div>
+
+
+
 </div>

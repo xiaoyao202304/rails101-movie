@@ -5,9 +5,11 @@ Rails.application.routes.draw do
     member do
       post :favorite
     end
+    resources :reviews
   end
 
 
+  resources :favorite
 
   namespace :account do
     resources :groups

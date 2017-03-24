@@ -1,0 +1,11 @@
+<% if current_user && current_user.is_favorite_of?(@movie) %>
+  <%= simple_form_for([@movie, @movie.reviews.build]) do |f|%>
+
+    <div class="field">
+        <%= f.text_area :content, class: "form-control" %>
+    </div>
+
+
+    <%= f.submit "提交评论", data:{disable_with:"Submitting..."}, class:"btn btn-primary" %>
+  <% end %>
+<% end %>
